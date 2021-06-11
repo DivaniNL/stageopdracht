@@ -1,3 +1,4 @@
+@include('layouts.app')
 <html>
 
 <head>
@@ -31,7 +32,7 @@
                             <input type="text" class="form-control" name="adres" />
                         </div>
 
-                        <button type="submit" class="btn btn-primary-outline">Voeg je adres toe</button>
+                        <button type="submit" class="btn btn-secondary">Voeg je adres toe</button>
                     </form>
                 </div>
             </div>

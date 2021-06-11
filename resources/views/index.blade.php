@@ -1,12 +1,10 @@
-<html>
-    <head>
-    
-    </head>
-    <body>
+@include('layouts.app')
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="display-3">Adresboek</h1>
+                    <h1 class="display-3 header-adresboek">Adresboek</h1>
+                    <a class="btn btn-success btn-lg btn-block" href="/create">Adres Aanmaken <i class="fa fa-plus"></i></a>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -22,7 +20,7 @@
                                     
                                     @csrf
                                         
-                                        <button class="btn btn-danger delete-adres" onclick="DeleteAdres({!! $adres->id !!})">Delete</button>
+                                        <button class="btn btn-danger delete-adres" onclick="DeleteAdres({!! $adres->id !!})">Delete&nbsp;<i class="fa fa-trash" aria-hidden="true"></i></button>
                                     
                                 </td>
                                 <td>{{$adres->naam}}</td>
@@ -56,5 +54,3 @@
         }
         </script>
 
-    </body>
-</html>

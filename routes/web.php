@@ -22,3 +22,17 @@ Route::get('/create', function () {
 Route::delete('delete/{id}','AdresController@destroy');
 Route::resource('/', 'AdresController');
 // Route::resource('adressen', 'AdresController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware'=> 'auth'], function(){
+    Route::get('/', function () {
+        return view('index');
+    });
+    Route::get('/create', function () {
+        return view('create');
+    });
+    Route::delete('delete/{id}','AdresController@destroy');
+    Route::resource('/', 'AdresController');
+
+});
