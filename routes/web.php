@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::get('/create', function () {
     return view('create');
 });
+Route::get('/home', function () {
+    return redirect('index');
+});
+
 Route::delete('delete/{id}','AdresController@destroy');
 Route::resource('/', 'AdresController');
 // Route::resource('adressen', 'AdresController');
