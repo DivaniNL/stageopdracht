@@ -39,8 +39,8 @@ class AdresController extends Controller
     {
         //
         $request->validate([
-          'naam'=>'required',
-          'adres'=>'required',
+          'naam'=>'required|unique:adres',
+          'adres'=>'required|unique:adres',
         ]);
 
         $adres = new Adres([
@@ -71,7 +71,8 @@ class AdresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $adres = Adres::find($id);
+        return view('edit', compact('adres'));
     }
 
     /**
@@ -81,10 +82,20 @@ class AdresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request, $id) {
+        
+        $request->validate([
+            'naam'=>'required|unique:adres',
+            'adres'=>'required|unique:adres',
+        ]);
+
+        $adres = Adres::find($id);
+
+        $adres->naam = $request->get('naam'); 
+        $adres->adres = $request->get('adres'); 
+        $adres->save();
+        return redirect('/')->with('success', 'Adres updated!'); 
+        }
 
     /**
      * Remove the specified resource from storage.

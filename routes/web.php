@@ -22,13 +22,19 @@ Route::get('/create', function () {
 Route::get('/home', function () {
     return redirect('index');
 });
-///Controllers
 
+///Controllers
+Route::get('edit', 'AdresController@edit');
+Route::get('/{id}/edit', 'AdresController@edit')->name('adres.edit');
+Route::get('/{id}/update', 'AdresController@update')->name('adres.update');
 Route::resource('/', 'AdresController');
 //Authentication Routes
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=> 'auth'], function(){
+    Route::get('/edit/{id}', function () {
+        return view('edit');
+    });
     Route::get('/', function () {
         return view('index');
     });

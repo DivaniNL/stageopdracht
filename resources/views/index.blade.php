@@ -10,7 +10,7 @@
                         <thead>
                             <tr>
                                 <!-- empty <td> to match the amount of columns in the other <td> tag -->
-                                <td>&nbsp;</td>
+                                <td colspan = 2>Actions</td>
                                 <td>Naam</td>
                                 <td>Adres</td>
                             </tr>
@@ -20,6 +20,7 @@
                             @foreach($adressen as $adres)
                             <!-- Gives each <tr> tag a ID to match the id of the record in the database. This is done to specify which item should be deleted when it's delete button is klicked -->
                             <tr id="adres-{{$adres->id}}">
+                                <td><a href="{{ route('adres.edit', ['id' => $adres->id])}}" class="btn btn-warning">Edit&nbsp;<i class="fa fa-pencil" aria-hidden="true"></i></a></td> 
                                 <td>
                                     <!-- protect this site from CSRF attacks -->
                                     @csrf
