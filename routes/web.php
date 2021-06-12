@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+///Show Views
 Route::get('/', function () {
     return view('index');
 });
@@ -22,12 +22,11 @@ Route::get('/create', function () {
 Route::get('/home', function () {
     return redirect('index');
 });
+///Controllers
 
-Route::delete('delete/{id}','AdresController@destroy');
 Route::resource('/', 'AdresController');
-// Route::resource('adressen', 'AdresController');
+//Authentication Routes
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=> 'auth'], function(){
     Route::get('/', function () {
@@ -38,5 +37,4 @@ Route::group(['middleware'=> 'auth'], function(){
     });
     Route::delete('delete/{id}','AdresController@destroy');
     Route::resource('/', 'AdresController');
-
 });
